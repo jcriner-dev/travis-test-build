@@ -1,0 +1,26 @@
+language: python
+
+matrix:
+        include:
+                #- os: linux
+                #  dist: trusty
+                #  sudo: required # runs in full virtual so we can run docker for 32bit
+                #  python: 2.7
+                #  env: DOCKER_32_BIT=true
+                #  services:
+                #          - docker
+                - os: osx
+                  osx_image: xcode6.4
+                  language: generic
+
+install:
+        # turn this in to fabric / invoke commands
+        - "if [[ -z \"$DOCKER_32_BIT\" ]]; then make install; fi"
+
+script:
+        # turn this in to fabric / invoke commands
+        - "if [[ -z \"$DOCKER_32_BIT\" ]]; then make pyinstaller; fi"
+        # using docker requires everything to be in one script
+        - "if [[ -n \"$DOCKER_32_BIT\" ]]; then docker run -i -v \"${PWD}:/mydocker\" toopher/centos-i386:centos6 /bin/bash -c \"linux32 --32bit i386 /mydocker/docker.bash\"; fi"
+
+# cache: pip

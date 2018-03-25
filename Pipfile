@@ -1,0 +1,30 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+"flake8" = "*"
+pytest = "*"
+advbumpversion = "*"
+invoke = "*"
+pyinstaller = "*"
+
+[packages]
+cryptography = "*"
+fastpbkdf2 = "*"
+bcrypt = "*"
+bottle = "*"
+bottle-sqlite = "*"
+"html5lib" = "*"
+netifaces = "*"
+passlib = "*"
+python-dateutil = "*"
+requests = "*"
+reportlab = "*"
+rocket = "*"
+pyjwt = "*"
+pytz = "*"
+
+[requires]
+python_version = "2.7"
