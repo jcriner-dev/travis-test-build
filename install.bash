@@ -28,7 +28,8 @@ if [[ "$TRAVIS_OS_NAME" == "osx" ]] || [[ "$UNAME" == "Darwin" ]]; then
     if [[ -z "$BREW" ]]; then
         BREW="$(command -v echo) fake brew"
     fi
-    $BREW update
+    #$BREW update
+    $BREW install "python@2"
     $BREW install pipenv
 # linux install pipenv with pip, but only from within a virtualenv
 # travis puts your python in a virtualenv by default
@@ -49,5 +50,5 @@ pipenv run pip --version
 pipenv run python --version
 
 # install from Pipfile.lock
-#$PIPENV install --dev --skip-lock
-$PIPENV install --dev
+$PIPENV install --dev --skip-lock
+#$PIPENV install --dev
