@@ -28,9 +28,16 @@ if [[ "$TRAVIS_OS_NAME" == "osx" ]] || [[ "$UNAME" == "Darwin" ]]; then
     if [[ -z "$BREW" ]]; then
         BREW="$(command -v echo) fake brew"
     fi
-    #$BREW update
-    $BREW install "python@2"
-    $BREW install pipenv
+    # this block works, but update takes forever and brew installs python3 as a requirement
+    ##$BREW update
+    #$BREW install "python@2"
+    #$BREW install pipenv
+    curl -O https://bootstrap.pypa.io/get-pip.py
+    sudo python get-pip.py
+    sudo pip install virtualenv --upgrade
+    sudo pip install pew --upgrade
+    sudo pip install pipenv --upgrade
+
 # linux install pipenv with pip, but only from within a virtualenv
 # travis puts your python in a virtualenv by default
 elif [[ "$TRAVIS_OS_NAME" == "linux" ]] || [[ "$UNAME" == "Linux" ]]; then
